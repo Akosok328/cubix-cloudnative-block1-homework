@@ -38,11 +38,6 @@ jobs:
       packages: write
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Download artifact from maven job
-      uses: actions/download-artifact@v8
-      with:
-        name: java-app
 
     - name: Logging in to Docker
       run: docker login ghcr.io -u Akosok328 -p ${{ github.token }}
