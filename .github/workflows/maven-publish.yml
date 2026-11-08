@@ -43,7 +43,7 @@ jobs:
       run: docker login ghcr.io -u Akosok328 -p ${{ github.token }}
 
     - name: Build Docker image
-      run: docker build . -t ghcr.io/akosok328/cubix/1/homework/app:springboot
+      run: docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/akosok328/cubix/1/homework/app:springboot $GITHUB_WORKSPACE/target
 
     - name: Publish Docker image
       run: docker push ghcr.io/akosok328/cubix/1/homework/app:springboot
