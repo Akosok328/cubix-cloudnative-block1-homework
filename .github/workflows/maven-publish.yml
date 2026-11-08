@@ -32,7 +32,6 @@ jobs:
   xdocker-create-publish:
 
     runs-on: ubuntu-latest
-    needs: maven
     permissions:
       contents: read
       packages: write
@@ -43,7 +42,7 @@ jobs:
       run: docker login ghcr.io -u Akosok328 -p ${{ github.token }}
 
     - name: Build Docker image
-      run: docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/akosok328/cubix/1/homework/app:springboot $GITHUB_WORKSPACE/target
+      run: docker build . -t ghcr.io/USERNAME/cubix/1/homework/app:springboot
 
     - name: Publish Docker image
       run: docker push ghcr.io/akosok328/cubix/1/homework/app:springboot
