@@ -29,9 +29,10 @@ jobs:
     - name: Build with Maven
       run: ./mvnw clean package
 
-  xdocker-create-publish:
+  docker-create-publish:
 
     runs-on: ubuntu-latest
+    needs: maven
     permissions:
       contents: read
       packages: write
@@ -47,9 +48,10 @@ jobs:
     - name: Publish Docker image
       run: docker push ghcr.io/akosok328/cubix/1/homework/app:springboot
 
-  xdocker-verify:
+  docker-verify:
 
     runs-on: ubuntu-latest
+    needs: docker-create-publish
     permissions:
       contents: read
       packages: write
